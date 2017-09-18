@@ -1,0 +1,16 @@
+Universe	= Vanilla
+Getenv		= True
+notification    = Error
+notify_user     = bbullard@brandeis.edu
+Output          = $ENV(WORKDIR)/Files/ntuples/selection/$(mode)_condor.out
+Error           = $ENV(WORKDIR)/Files/ntuples/selection/$(mode)_condor.err
+Log             = $ENV(WORKDIR)/Files/ntuples/selection/$(mode)_condor.log
+# Enable the file transfer mechanism
+should_transfer_Files = YES
+when_to_transfer_output = ON_EXIT
+txtloc          = $ENV(TXTLOC)
+rfile           = $ENV(RFILE)
+mode            = $ENV(MODE)
+Executable 		= $ENV(WORKDIR)/submitJobs
+Arguments		= " $(txtloc) $(rfile) $(mode)"
+Queue
